@@ -66,9 +66,9 @@
 <div align="center">
 <h2 style="background: linear-gradient(90deg,#9333ea,#10b981); -webkit-background-clip: text; color: transparent;">📸 Screenshots</h2>
 <h3>💻 Desktop Experience</h3>
-<img src="https://i.ibb.co/RGp2rTVM/Light-house-test.png" alt="Desktop View" width="1366">
+<img src="./public/PC-Screen.png" alt="Desktop View" width="1366">
 <h3>📱 Mobile Native Feel</h3>
-<img src="https://i.ibb.co/nNpMJL3H/Screenshot-20251024-233111-Chrome.jpg" alt="Mobile View" width="300">
+<img src="./public/Phone-screen.jpeg" alt="Mobile View" width="300">
 </div>
 
 <hr>
