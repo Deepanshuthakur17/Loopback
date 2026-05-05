@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Architectural Clarity — calm, spacious, Notion-inspired SaaS feedback design system.
+   All colors HSL. */
+
+@layer base {
+  :root {
+    --background: 40 30% 98%;
+    --foreground: 220 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 12%;
+
+    --primary: 215 70% 22%;
+    --primary-foreground: 40 30% 98%;
+    --primary-glow: 215 60% 45%;
+
+    --secondary: 40 20% 94%;
+    --secondary-foreground: 220 25% 12%;
+
+    --muted: 40 15% 95%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 38 90% 55%;
+    --accent-foreground: 220 25% 12%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 145 55% 38%;
+    --success-foreground: 0 0% 100%;
+
+    --info: 215 80% 50%;
+    --info-foreground: 0 0% 100%;
+
+    --warning: 35 92% 50%;
+    --warning-foreground: 220 25% 12%;
+
+    --border: 40 15% 90%;
+    --input: 40 15% 92%;
+    --ring: 215 70% 35%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 40 25% 96%;
+    --sidebar-foreground: 220 20% 25%;
+    --sidebar-primary: 215 70% 22%;
+    --sidebar-primary-foreground: 40 30% 98%;
+    --sidebar-accent: 40 20% 92%;
+    --sidebar-accent-foreground: 220 25% 12%;
+    --sidebar-border: 40 15% 88%;
+    --sidebar-ring: 215 70% 35%;
+
+    --gradient-subtle: linear-gradient(180deg, hsl(40 30% 99%), hsl(40 20% 96%));
+    --gradient-brand: linear-gradient(135deg, hsl(215 70% 22%), hsl(215 60% 38%));
+    --shadow-soft: 0 1px 2px hsl(220 25% 12% / 0.04), 0 1px 3px hsl(220 25% 12% / 0.04);
+    --shadow-md: 0 4px 12px -2px hsl(220 25% 12% / 0.06), 0 2px 4px hsl(220 25% 12% / 0.04);
+    --shadow-lg: 0 16px 40px -12px hsl(220 25% 12% / 0.12);
+    --shadow-glow: 0 0 0 4px hsl(215 70% 35% / 0.12);
+
+    --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 220 25% 7%;
+    --foreground: 40 20% 95%;
+
+    --card: 220 22% 10%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 220 22% 10%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 40 20% 95%;
+    --primary-foreground: 220 25% 10%;
+    --primary-glow: 215 70% 60%;
+
+    --secondary: 220 18% 14%;
+    --secondary-foreground: 40 20% 95%;
+
+    --muted: 220 18% 13%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 38 90% 60%;
+    --accent-foreground: 220 25% 10%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 145 55% 50%;
+    --success-foreground: 220 25% 10%;
+
+    --info: 215 80% 60%;
+    --info-foreground: 220 25% 10%;
+
+    --warning: 35 92% 60%;
+    --warning-foreground: 220 25% 10%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 16%;
+    --ring: 215 70% 55%;
+
+    --sidebar-background: 220 25% 9%;
+    --sidebar-foreground: 40 15% 80%;
+    --sidebar-primary: 40 20% 95%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 220 18% 14%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 220 15% 16%;
+    --sidebar-ring: 215 70% 55%;
+
+    --gradient-subtle: linear-gradient(180deg, hsl(220 25% 8%), hsl(220 25% 6%));
+    --gradient-brand: linear-gradient(135deg, hsl(215 70% 50%), hsl(215 60% 35%));
+    --shadow-soft: 0 1px 2px hsl(0 0% 0% / 0.3), 0 1px 3px hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 12px -2px hsl(0 0% 0% / 0.4);
+    --shadow-lg: 0 16px 40px -12px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 0 4px hsl(215 70% 55% / 0.18);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  .font-serif-display {
+    font-family: 'Instrument Serif', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-subtle { background: var(--gradient-subtle); }
+  .bg-gradient-brand { background: var(--gradient-brand); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-elegant { box-shadow: var(--shadow-md); }
+  .shadow-floating { box-shadow: var(--shadow-lg); }
+  .ring-glow { box-shadow: var(--shadow-glow); }
+  .transition-base { transition: all var(--transition-base); }
+}
