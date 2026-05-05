@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, Navigate, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Loader2, Sparkles } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -25,6 +25,7 @@ export default function Auth() {
   const navigate = useNavigate();
   const location = useLocation();
   const [mode, setMode] = useState<"signin" | "signup">(params.get("mode") === "signup" ? "signup" : "signin");
+  const [showPassword, setShowPassword] = useState(false);
 
   if (loading) return <LoadingScreen />;
 
@@ -38,10 +39,8 @@ export default function Auth() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-subtle">
       <header className="flex items-center justify-between px-6 h-16">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="size-7 rounded-lg bg-gradient-brand flex items-center justify-center text-primary-foreground">
-            <Sparkles className="size-3.5" />
-          </div>
+        <Link to="/" className="flex items-center gap-2.5">
+          <img src="/logo.png" alt="Loopback Logo" className="size-8 object-contain" />
           <span className="font-serif-display text-xl">Loopback</span>
         </Link>
         <ThemeToggle />
@@ -138,18 +137,31 @@ export default function Auth() {
                     {({ field }: any) => (
                       <div className="space-y-1.5">
                         <label className="text-sm font-medium" htmlFor="password">Password</label>
-                        <input
-                          {...field}
-                          id="password"
-                          type="password"
-                          autoComplete={isSignup ? "new-password" : "current-password"}
-                          placeholder="••••••••"
-                          className={cn(
-                            "w-full px-3 py-2.5 rounded-lg border bg-background text-sm transition-base",
-                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                            errors.password && touched.password ? "border-destructive" : "border-input"
-                          )}
-                        />
+                        <div className="relative">
+                          <input
+                            {...field}
+                            id="password"
+                            type={showPassword ? "text" : "password"}
+                            autoComplete={isSignup ? "new-password" : "current-password"}
+                            placeholder="••••••••"
+                            className={cn(
+                              "w-full px-3 py-2.5 rounded-lg border bg-background text-sm transition-base pr-10",
+                              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                              errors.password && touched.password ? "border-destructive" : "border-input"
+                            )}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            {showPassword ? (
+                              <EyeOff className="size-4" />
+                            ) : (
+                              <Eye className="size-4" />
+                            )}
+                          </button>
+                        </div>
                         <ErrorMessage name="password" component="p" className="text-xs text-destructive" />
                       </div>
                     )}
